@@ -1,10 +1,11 @@
 const express = require('express');
-const api = require('./routes/api')
 
 require('dotenv').config();
 
 const app = express();
 app.use(express.json())
+
+const api = require('./routes/api')
 
 app.use('/api', api)
 
