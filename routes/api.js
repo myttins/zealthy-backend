@@ -3,8 +3,15 @@ const router = express.Router();
 
 const db = require('../models/models');
 
-router.get('/:id', (req, res) => {
-  res.status(200).json('getting id...');
+router.get('/:id', async (req, res) => {
+  const { id } = req.params.id;
+
+  const query = await db.query(`
+  SELECT * from tickets 
+  WHERE id = ${id}
+  `);
+
+  res.status(200).json(query.rows);
 });
 
 router.get('/', async (req, res) => {
