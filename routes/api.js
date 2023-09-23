@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../models/models');
 
 router.get('/:id', async (req, res) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
 
   const query = await db.query(`
   SELECT * from tickets 
