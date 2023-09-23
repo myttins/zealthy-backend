@@ -1,13 +1,14 @@
 const express = require('express');
+const api = require('./routes/api')
+
+require('dotenv').config();
 
 const app = express();
 app.use(express.json())
 
-app.get('/', (req, res) =>{
-    res.send('zealthy backend')
-})
+app.use('/api', api)
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
